@@ -1,0 +1,22 @@
+[
+    {
+        "item": "pizza",
+        "amount": 100.0
+    },
+    {
+        "item": "soda",
+        "amount": 20.0
+    },
+    {
+        "item": "fanta",
+        "amount": 30.0
+    },
+    {
+        "item": "mercedes",
+        "amount": 50000.0
+    },
+    {
+        "item": "ferrary",
+        "amount": 500000.0
+    }
+]

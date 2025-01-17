@@ -1,3 +1,6 @@
+import json
+
+
 def deposit(balance):
     amount = float(input('Enter the amount to deposit: '))
     balance += amount
@@ -27,6 +30,35 @@ def purchase_history(history):
     return
 
 
+def purchased_log():
+    with open('datafiles/account_data.json', 'r') as f:
+        purchased = json.load(f)
+        # print(purchased)
+        # print(json.dumps(purchased, indent=4, ensure_ascii=False))
+        for entry in purchased:
+            print(f"item: {entry['item']}, amount: {entry['amount']}")
+    return
+
+
+def save_history(history):
+    data = [{'item': item, 'amount': amount} for item, amount in history]
+
+    try:
+        with open('datafiles/account_data.json', 'r') as f:
+            file_content = f.read()
+            if file_content:
+                existing_data = json.loads(file_content)
+            else:
+                existing_data = []
+    except FileNotFoundError:
+        existing_data = []
+
+    existing_data.extend(data)
+
+    with open('datafiles/account_data.json', 'w') as f:
+        json.dump(existing_data, f, indent=4)
+
+
 def view_bank_account():
     balance = 0
     history = []
@@ -34,8 +66,10 @@ def view_bank_account():
     while True:
         print('1. Deposit')
         print('2. Purchase')
-        print('3. Purchase history')
-        print('4. Exit')
+        print('3. Current purchases')
+        print('4. Purchase history')
+        print('5. Current balance')
+        print('6. Exit')
 
         choice = input('Choose an option: ')
         if choice == '1':
@@ -45,6 +79,11 @@ def view_bank_account():
         elif choice == '3':
             purchase_history(history)
         elif choice == '4':
+            purchased_log()
+        elif choice == '5':
+            print(f'Current balance: {balance}')
+        elif choice == '6':
+            save_history(history)
             break
         else:
             print('Invalid option')
