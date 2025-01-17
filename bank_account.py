@@ -58,9 +58,21 @@ def save_history(history):
     with open('datafiles/account_data.json', 'w') as f:
         json.dump(existing_data, f, indent=4)
 
+def load_balance():
+    try:
+        with open('datafiles/account_balance.json', 'r') as f:
+            balance = json.load(f)
+    except FileNotFoundError:
+        balance = 0
+    return balance
+
+def save_balance(balance):
+    with open('datafiles/account_balance.json', 'w') as f:
+        json.dump(balance, f, indent=4)
+
 
 def view_bank_account():
-    balance = 0
+    balance = load_balance()
     history = []
 
     while True:
@@ -84,6 +96,7 @@ def view_bank_account():
             print(f'Current balance: {balance}')
         elif choice == '6':
             save_history(history)
+            save_balance(balance)
             break
         else:
             print('Invalid option')

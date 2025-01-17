@@ -18,5 +18,9 @@
     {
         "item": "ferrary",
         "amount": 500000.0
+    },
+    {
+        "item": "castle",
+        "amount": 100000.0
     }
 ]
