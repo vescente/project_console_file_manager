@@ -66,6 +66,14 @@ def view_files():
 
 
 def save_directory_components():
-    with open('datafiles/directory.txt', 'w') as f:
-        for item in os.listdir():
-            f.write(f"{item}\n")
+    files = []
+    dirs = []
+    for item in os.listdir():
+        if os.path.isfile(item):
+            files.append(item)
+        elif os.path.isdir(item):
+            dirs.append(item)
+
+    with open('datafiles\listdir.txt', 'w') as f:
+        f.write("files: " + ", ".join(files) + "\n")
+        f.write("dirs: " + ", ".join(dirs) + "\n")

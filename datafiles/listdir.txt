@@ -1,0 +1,2 @@
+files: bank_account.py, console_file_manager.py, creator_info.py, file_operations.py, json_info.py, LICENSE, play_quiz.py, system_info.py, testing.ipynb, test_filemanager.py
+dirs: .git, datafiles, __pycache__
