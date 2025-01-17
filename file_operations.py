@@ -63,3 +63,9 @@ def view_files():
                 print(item)
     else:
         print("Указанный путь не является директорией.")
+
+
+def save_directory_components():
+    with open('datafiles/directory.txt', 'w') as f:
+        for item in os.listdir():
+            f.write(f"{item}\n")

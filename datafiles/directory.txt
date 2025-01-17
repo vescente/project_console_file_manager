@@ -1,0 +1,13 @@
+.git
+bank_account.py
+console_file_manager.py
+creator_info.py
+datafiles
+file_operations.py
+json_info.py
+LICENSE
+play_quiz.py
+system_info.py
+testing.ipynb
+test_filemanager.py
+__pycache__

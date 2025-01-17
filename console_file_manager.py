@@ -1,4 +1,4 @@
-from file_operations import create_folder, delete_file_or_folder, copy_file_or_folder, view_directory_contents, view_folders, view_files
+from file_operations import create_folder, delete_file_or_folder, copy_file_or_folder, view_directory_contents, view_folders, view_files, save_directory_components
 from system_info import view_os_info, change_working_directory
 from play_quiz import play_quiz
 from bank_account import view_bank_account
@@ -18,7 +18,8 @@ def main():
         print("9. Играть в викторину")
         print("10. Мой банковский счет")
         print("11. Смена рабочей директории")
-        print("12. Выход")
+        print("12. Сохранение компонентов директории")
+        print("13. Выход")
 
         choice = input("Выберите пункт меню: ")
 
@@ -45,6 +46,8 @@ def main():
         elif choice == "11":
             change_working_directory()
         elif choice == "12":
+            save_directory_components()
+        elif choice == "13":
             print("До свидания!")
             break
         else:
