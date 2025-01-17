@@ -1,7 +1,11 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from file_operations import create_folder, delete_file_or_folder, copy_file_or_folder, view_directory_contents, view_folders, view_files
 from system_info import view_os_info, change_working_directory
 from play_quiz import play_quiz
-from bank_account import view_bank_account
+from bank_account.main import view_bank_account
 from creator_info import view_creator_info
 
 
