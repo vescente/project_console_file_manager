@@ -58,22 +58,29 @@ def view_files():
     path = input("Введите путь к директории: ")
     if os.path.isdir(path):
         print("Файлы в директории:")
-        for item in os.listdir(path):
-            if os.path.isfile(os.path.join(path, item)):
-                print(item)
+        try:
+            for item in os.listdir(path):
+                if os.path.isfile(os.path.join(path, item)):
+                    print(item)
+        except FileNotFoundError:
+            print("Директория не найдена.")
+        except PermissionError:
+            print("Нет доступа к директории.")
     else:
         print("Указанный путь не является директорией.")
 
 
 def save_directory_components():
-    files = []
-    dirs = []
-    for item in os.listdir():
-        if os.path.isfile(item):
-            files.append(item)
-        elif os.path.isdir(item):
-            dirs.append(item)
+    try:
+        files = [item for item in os.listdir() if os.path.isfile(item)]
+        dirs = [item for item in os.listdir() if os.path.isdir(item)]
 
-    with open('datafiles\listdir.txt', 'w') as f:
-        f.write("files: " + ", ".join(files) + "\n")
-        f.write("dirs: " + ", ".join(dirs) + "\n")
+        with open('datafiles/listdir.txt', 'w') as f:
+            f.write("files: " + ", ".join(files) + "\n")
+            f.write("dirs: " + ", ".join(dirs) + "\n")
+    except FileNotFoundError:
+        print("Файл не найден.")
+    except PermissionError:
+        print("Нет доступа к файлу.")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
